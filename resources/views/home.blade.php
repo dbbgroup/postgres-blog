@@ -6,10 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple PGSQL Blog</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
-<body class="p-5">
+<body>
     <div id="root">
         @include('layouts.header')
+
+        <main class="main">
+            <h3>Новые публикации</h1>
+            <div class="posts d-flex flex-column">
+                <a href={{ route('post', ['id' => 1]) }} class="posts__item">
+                    <h5>Заголовок новости</h5>
+                </a>
+            </div>
+        </main>
 
         @include("layouts.footer")
     </div>

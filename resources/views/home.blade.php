@@ -15,9 +15,14 @@
         <main class="main">
             <h3>Новые публикации</h1>
             <div class="posts d-flex flex-column">
-                <a href={{ route('post', ['id' => 1]) }} class="posts__item">
-                    <h5>Заголовок новости</h5>
+                @forelse ($posts as $post)
+                <a href={{ route('post', ['id' => $post->id]) }} class="posts__item">
+                    <h5>{{ $post->title }}</h5>
                 </a>
+                @empty
+                <h5>Публикации отсутствуют.</h5>
+                @endforelse
+
             </div>
         </main>
 

@@ -12,21 +12,21 @@ class AccountController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'login' => 'required',
+            'email' => 'required',
             'password' => 'required|min:6',
         ]);
         $credentials = $request->only('email', 'password');
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect('/');
+            return redirect('home');
         }
     }
 
     public function create(array $data)
     {
         return User::create([
-            'login' => $data['email'],
+            'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -34,13 +34,13 @@ class AccountController extends Controller
     public function signup(Request $request)
     {
         $request->validate([
-            'login' => 'required|email|unique:accounts',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
 
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("/");
+        return redirect("home");
     }
 }

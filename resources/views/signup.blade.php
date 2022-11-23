@@ -15,9 +15,10 @@
         <main class="main">
             <h3>Регистрация</h1>
             <form class="" method="post">
+                @csrf
                 <div class="form-group">
                     <label for="login">Логин</label>
-                    <input id="login" type="email" name="login" class="form-control" placeholder="E-mail" required>
+                    <input id="login" type="email" name="email" class="form-control" placeholder="E-mail" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Пароль</label>

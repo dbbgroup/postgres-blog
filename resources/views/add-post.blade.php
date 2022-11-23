@@ -15,6 +15,7 @@
         <main class="main">
             <h3>Добавить пост</h1>
             <form method="post">
+                @csrf
                 <div class="form-group">
                     <label for="title">Заголовок</label>
                     <input id="title" type="text" name="title" class="form-control" placeholder="Заголовок новости" required>

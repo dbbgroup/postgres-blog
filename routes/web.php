@@ -24,7 +24,7 @@ Route::view('/signup', 'signup')->name('signup');
 
 Route::get('/add-post', function () {
     if (Auth::check()) {
-        return view('add-post')->name('add-post');
+        return view('add-post');
     } else return redirect('/login');
 })->name('add-post');
 

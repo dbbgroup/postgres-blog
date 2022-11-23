@@ -19,13 +19,14 @@ class AccountController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect('home');
-        }
+            return redirect('/');
+        } else return view('login');
     }
 
     public function create(array $data)
     {
         return User::create([
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -34,6 +35,7 @@ class AccountController extends Controller
     public function signup(Request $request)
     {
         $request->validate([
+            'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
@@ -41,6 +43,6 @@ class AccountController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("home");
+        return redirect("/");
     }
 }

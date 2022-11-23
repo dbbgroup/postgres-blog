@@ -13,11 +13,18 @@ class PostController extends Controller
         return view('home', compact('posts'));
     }
 
-    public function getOne()
+    public function getOne($id)
     {
+        $post = DB::table('posts')->select('*')->where('id', '=', $id)->get()->all();
+        return view('post', compact('post'));
     }
 
-    public function set()
+    public function set(Request $request)
     {
+        $title = $request->title;
+        $description = $request->description;
+
+        DB::table('posts')->insert(compact('title', 'description'));
+        return redirect('/');
     }
 }

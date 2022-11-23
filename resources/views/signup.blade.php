@@ -16,6 +16,7 @@
             <h3>Регистрация</h1>
             <form class="" method="post">
                 @csrf
+                <input type="hidden" name="name" value="user">
                 <div class="form-group">
                     <label for="login">Логин</label>
                     <input id="login" type="email" name="email" class="form-control" placeholder="E-mail" required>
